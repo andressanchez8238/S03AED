@@ -5,18 +5,26 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
-    public LinkedList<string> ListaDeNombres = new();
-    
-    public CustomLinkedList HordaManagment = new();
+    //public LinkedList<string> ListaDeNombres = new();
+
+    public Enemy enemyPref;
+
+    public CustomLinkedList HordaManagment;
 
     void Start()
     {
+        HordaManagment.Set(enemyPref);
+
         //HordaManagment.ad
-    
+        HordaManagment.Add(new());
+        HordaManagment.Add(new());
+        HordaManagment.Add(new());
+        HordaManagment.Add(new());
+        print(HordaManagment.Count);
     }
     void Update()
     {
-        
+
     }
 
     [Button]
@@ -40,7 +48,7 @@ public class GameManager : MonoBehaviour
         d.SetNext(e);
 
         Node<string> Evaluator = a;
-        while(Evaluator != null)
+        while (Evaluator != null)
         {
             Debug.Log(Evaluator.Value);
             Evaluator = Evaluator.Next;
@@ -59,7 +67,14 @@ public class GameManager : MonoBehaviour
         //ListaDeNombres.RemoveFirst();
         ListaDeNombres.RemoveLast();
 
-        ListaDeNombres.Traverse(value => Debug.Log(value.Value)  );
+        ListaDeNombres.Traverse(value => Debug.Log(value.Value));
 
+    }
+
+    [Button]
+    public void HordeSpawnTest()
+    {
+        //NodeOfHorde hordaA = new();
+        HordaManagment.SpawnHorde();
     }
 }

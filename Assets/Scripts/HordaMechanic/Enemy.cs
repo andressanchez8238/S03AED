@@ -8,9 +8,13 @@ public class Enemy : MonoBehaviour
 
     public Material Mat;
 
+    private void Awake()
+    {
+        Mat = GetComponent<MeshRenderer>().material;
+    }
     void Start()
     {
-        Mat = GetComponent<Material>(); 
+        
     }
 
     // Update is called once per frame
