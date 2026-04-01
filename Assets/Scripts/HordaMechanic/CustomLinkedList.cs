@@ -1,0 +1,37 @@
+using UnityEngine;
+using Sirenix.OdinInspector;
+using System.Collections.Generic;
+public class CustomLinkedList : LinkedList<NodeOfHorde>
+{
+    public Enemy EnemyPrefab;
+
+    public override void Add(NodeOfHorde value)
+    {
+        base.Add(value);
+    }
+
+    public void SpawnHorde()
+    {
+        //->
+        for (int i = 0; i < head.Value.Quantity; i++)
+        {
+            Enemy enemy = Instantiate(EnemyPrefab);
+
+            List<string> names = new(head.Value.EnemyNames);
+
+            enemy.EnemyName = names[Random.Range(0, names.Count)];
+
+            enemy.Life = Random.Range(head.Value.Life-5 ,head.Value.Life+5);
+
+            enemy.Str = Random.Range(head.Value.Str - 5, head.Value.Str + 5);
+
+            enemy.SetMat(head.         );
+
+        }
+
+        RemoveFirst();
+
+        //->
+
+    }
+}

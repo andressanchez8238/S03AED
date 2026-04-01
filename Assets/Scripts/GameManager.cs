@@ -6,10 +6,13 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
     public LinkedList<string> ListaDeNombres = new();
+    
+    public CustomLinkedList HordaManagment = new();
 
     void Start()
     {
-        
+        //HordaManagment.ad
+    
     }
     void Update()
     {
@@ -47,15 +50,16 @@ public class GameManager : MonoBehaviour
     [Button]
     public void TestLinkedList(List<string> ListaNombres)
     {
-
+        LinkedList<string> ListaDeNombres = new();
         foreach (string n in ListaNombres)
         {
             ListaDeNombres.Add(n);
         }
+        Debug.Log(ListaDeNombres.Count);
         //ListaDeNombres.RemoveFirst();
         ListaDeNombres.RemoveLast();
 
-        ListaDeNombres.Traverse();
+        ListaDeNombres.Traverse(value => Debug.Log(value.Value)  );
 
     }
 }

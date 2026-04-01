@@ -1,13 +1,14 @@
 
 
+using System;
 using UnityEngine;
 
-public class LinkedList<T>
+public class LinkedList<T> : MonoBehaviour
 {
     public Node<T> head = null;
     public int Count;
 
-    public void Add(T value)
+    public virtual void Add(T value)
     {
         Node<T> tempNode = new(value);
 
@@ -88,12 +89,14 @@ public class LinkedList<T>
 
     }
 
-    public void Traverse()
+    public void Traverse(Action<Node<T>> action)
     {
         Node<T> Evaluator = head;
         while (Evaluator != null)
         {
-            Debug.Log(Evaluator.Value);
+            //  Debug.Log(Evaluator.Value);
+            action(Evaluator);
+
             Evaluator = Evaluator.Next; 
         }
     }
